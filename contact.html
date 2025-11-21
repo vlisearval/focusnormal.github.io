@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <title>Фокус</title>
+</head>
+<body>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-inner">
+                <a href="#" class="logo">
+                    <i class="fas fa-laptop"></i>
+                    <img src="../assets/images/логопип.svg" alt="">
+                </a>
+
+                <ul class="desktop-menu">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                    <li><a href="#">Каталог</a></li>
+                    <li><a href="blog.html">Блог</a></li>
+                    <li><a href="contact.html">Контакты</a></li>
+                    <li>
+                    </li>
+                </ul>
+                <div class="theme-toggle">
+                        <i class="fas fa-moon"><img src="../assets/images/луна.svg" alt=""></i>
+                </div>
+                <button class="burger" id="burgerBtn">
+                    <span class="burger-line"></span>
+                    <span class="burger-line"></span>
+                    <span class="burger-line"></span>
+                </button>
+            </div>
+
+            <div class="mobile-menu" id="mobileMenu">
+                <ul class="mobile-nav">
+                    <li><a href="#">Главная</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                    <li><a href="#">Каталог</a></li>
+                    <li><a href="blog.html">Блог</a></li>
+                    <li><a href="contact.html">Контакты</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Страница загружена - проверяем бургер-меню...');
+            
+            const burgerBtn = document.getElementById('burgerBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+
+            if (!burgerBtn || !mobileMenu) {
+                console.error('Элементы бургер-меню не найдены!');
+                return;
+            }
+
+            console.log('Бургер-кнопка найдена:', burgerBtn);
+            console.log('Мобильное меню найдено:', mobileMenu);
+
+            burgerBtn.addEventListener('click', function(event) {
+                console.log('Клик по бургеру!');
+                event.stopPropagation(); 
+                
+                this.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+                
+                console.log('Бургер активен:', this.classList.contains('active'));
+                console.log('Меню активно:', mobileMenu.classList.contains('active'));
+            });
+
+            const mobileLinks = document.querySelectorAll('.mobile-nav a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    console.log('Клик по ссылке меню - закрываем меню');
+                    burgerBtn.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                });
+            });
+
+            document.addEventListener('click', function(event) {
+                if (!mobileMenu.contains(event.target) && !burgerBtn.contains(event.target)) {
+                    burgerBtn.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                }
+            });
+
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    burgerBtn.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                }
+            });
+        });
+        
+    const themeToggle = document.querySelector('.theme-toggle');
+    const body = document.body;
+
+    if (localStorage.getItem('theme') === 'dark') {
+        body.classList.add('dark-theme');
+        themeToggle.innerHTML = '<i class="fas fa-sun"><img src="../assets/images/солн.svg" alt=""</i>';
+    }
+
+themeToggle.addEventListener('click', () => {
+    body.classList.toggle('dark-theme');
+    
+    if (body.classList.contains('dark-theme')) {
+        themeToggle.innerHTML = '<i class="fas fa-sun"><img src="../assets/images/солн.svg" alt=""></i>';
+        localStorage.setItem('theme', 'dark');
+    } else {
+        themeToggle.innerHTML = '<i class="fas fa-moon"><img src="../assets/images/луна.svg" alt=""></i>';
+        localStorage.setItem('theme', 'light');
+    }
+});
+
+            
+    </script>
+</body>
+<section class="page-header">
+        <div class="container">
+            <h1>Контакты</h1>
+            <p>Свяжитесь с нами удобным для вас способом</p>
+        </div>
+    </section>
+<section class="section contact-info">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"> </i><img src="../assets/images/icons8-геолокация-66 3.svg" alt="" width="40px" height="40px">
+                    </div>
+                    <h3>Адрес</h3>
+                    <p>Москва, ул. Техническая, 15</p>
+                    <p>Ежедневно 10:00 - 22:00</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i><img src="../assets/images/telephone.svg" alt="" width="40px" height="40px">
+                    </div>
+                    <h3>Телефон</h3>
+                    <p>+7 (800) 123-45-67</p>
+                    <p>Бесплатный звонок по России</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i><img src="../assets/images/mail.svg" alt="" width="40px" height="40px">
+                    </div>
+                    <h3>Email</h3>
+                    <p>info@focus.ru</p>
+                    <p>Поддержка: support@focus.ru</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-headset"></i><img src="../assets/images/Icon.svg" alt="" width="40px" height="40px">
+                    </div>
+                    <h3>Поддержка</h3>
+                    <p>Круглосуточная техподдержка</p>
+                    <p>Чат, телефон, email</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section contact-main">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-form-container">
+                    <h2>Обратная связь</h2>
+                    <form class="contact-form" id="contact-form">
+                        <div class="form-group">
+                            <label for="name">Имя *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Телефон</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Тема</label>
+                            <select id="subject" name="subject">
+                                <option value="general">Общий вопрос</option>
+                                <option value="support">Техническая поддержка</option>
+                                <option value="purchase">Вопрос о покупке</option>
+                                <option value="warranty">Гарантия и сервис</option>
+                                <option value="other">Другое</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Сообщение *</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Отправить сообщение</button>
+                    </form>
+                </div>
+                <div class="map-container">
+                    <h2>Мы на карте</h2>
+                    <div class="map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2244.628031705276!2d37.64373053140281!3d55.7649635785831!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54a63de696809%3A0x6d5a21c5f55e3039!2z0J7Qs9C-0YDQvtC00L3QsNGPINCh0LvQvtCx0L7QtNCwINC_0LXRgC4sIDEyLCDQnNC-0YHQutCy0LAsIDEwMTAwMA!5e0!3m2!1sru!2sru!4v1763639686262!5m2!1sru!2sru" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <div class="map-overlay">
+                            <div class="map-info">
+                                <h4>Магазин "Фокус"</h4>
+                                <p>Москва, ул. Техническая, 15</p>
+                                <p>Метро: Технопарк</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            const contactForm = document.getElementById('contact-form');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+        
+        if (name && email && message) {
+            alert('Сообщение успешно отправлено! Мы свяжемся с вами в ближайшее время.');
+            contactForm.reset();
+        } else {
+            alert('Пожалуйста, заполните все обязательные поля.');
+        }
+    });
+}
+        </script>
+    </section>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <p>Магазин современной электроники для дома и офиса.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-vk"></i><img src="../assets/images/vk.svg" alt="" width="20px" height="20px"></a>
+                        <a href="#"><i class="fab fa-telegram"></i><img src="../assets/images/tg.svg" alt="" width="20px" height="20px"></a>
+                        <a href="#"><i class="fab fa-youtube"></i><img src="../assets/images/yt.svg" alt="" width="20px" height="20px"></a>
+                        <a href="#"><i class="fab fa-instagram"></i><img src="../assets/images/instagram.svg" alt="" width="20px" height="20px"></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Категории</h3>
+                    <ul>
+                        <li><a href="#">Ноутбуки</a></li>
+                        <li><a href="#">Смартфоны</a></li>
+                        <li><a href="#">Телевизоры</a></li>
+                        <li><a href="#">Аксессуары</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Компания</h3>
+                    <ul>
+                        <li><a href="about.html">О нас</a></li>
+                        <li><a href="blog.html">Блог</a></li>
+                        <li><a href="#">Вакансии</a></li>
+                        <li><a href="#">Партнеры</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"><img src="../assets/images/icons8-геолокация-66 3.svg" alt="" width="20px" height="20px"></i> Москва, ул. Техническая, 15</li>
+                        <li><i class="fas fa-phone"><img src="../assets/images/telephone.svg" alt="" width="20px" height="20px"></i> +7 (800) 123-45-67</li>
+                        <li><i class="fas fa-envelope"><img src="../assets/images/mail.svg" alt="" width="20px" height="20px"></i> info@focus.ru</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Магазин электроники "Фокус". Все права защищены.</p>
+            </div>
+        </div>
+    
+</body>
+</html>

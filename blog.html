@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <title>Фокус</title>
+</head>
+<body>
+<div class="container0">
+<body>
+    <header>
+        <div class="container">
+            <div class="header-inner">
+                <a href="#" class="logo">
+                    <i class="fas fa-laptop"></i>
+                    <img src="../assets/images/логопип.svg" alt="">
+                </a>
+
+                <ul class="desktop-menu">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                    <li><a href="#">Каталог</a></li>
+                    <li><a href="blog.html">Блог</a></li>
+                    <li><a href="contact.html">Контакты</a></li>
+                    <li>
+                    </li>
+                </ul>
+                <div class="theme-toggle">
+                        <i class="fas fa-moon"><img src="../assets/images/луна.svg" alt=""></i>
+                </div>
+                <button class="burger" id="burgerBtn">
+                    <span class="burger-line"></span>
+                    <span class="burger-line"></span>
+                    <span class="burger-line"></span>
+                </button>
+            </div>
+
+            <div class="mobile-menu" id="mobileMenu">
+                <ul class="mobile-nav">
+                    <li><a href="#">Главная</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                    <li><a href="#">Каталог</a></li>
+                    <li><a href="blog.html">Блог</a></li>
+                    <li><a href="contact.html">Контакты</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Страница загружена - проверяем бургер-меню...');
+            
+            const burgerBtn = document.getElementById('burgerBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+
+            if (!burgerBtn || !mobileMenu) {
+                console.error('Элементы бургер-меню не найдены!');
+                return;
+            }
+
+            console.log('Бургер-кнопка найдена:', burgerBtn);
+            console.log('Мобильное меню найдено:', mobileMenu);
+
+            burgerBtn.addEventListener('click', function(event) {
+                console.log('Клик по бургеру!');
+                event.stopPropagation(); 
+                
+                this.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+                
+                console.log('Бургер активен:', this.classList.contains('active'));
+                console.log('Меню активно:', mobileMenu.classList.contains('active'));
+            });
+
+            const mobileLinks = document.querySelectorAll('.mobile-nav a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    console.log('Клик по ссылке меню - закрываем меню');
+                    burgerBtn.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                });
+            });
+
+            document.addEventListener('click', function(event) {
+                if (!mobileMenu.contains(event.target) && !burgerBtn.contains(event.target)) {
+                    burgerBtn.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                }
+            });
+
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    burgerBtn.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                }
+            });
+        });
+        
+    const themeToggle = document.querySelector('.theme-toggle');
+    const body = document.body;
+
+    if (localStorage.getItem('theme') === 'dark') {
+        body.classList.add('dark-theme');
+        themeToggle.innerHTML = '<i class="fas fa-sun"><img src="../assets/images/солн.svg" alt=""</i>';
+    }
+
+themeToggle.addEventListener('click', () => {
+    body.classList.toggle('dark-theme');
+    
+    if (body.classList.contains('dark-theme')) {
+        themeToggle.innerHTML = '<i class="fas fa-sun"><img src="../assets/images/солн.svg" alt=""></i>';
+        localStorage.setItem('theme', 'dark');
+    } else {
+        themeToggle.innerHTML = '<i class="fas fa-moon"><img src="../assets/images/луна.svg" alt=""></i>';
+        localStorage.setItem('theme', 'light');
+    }
+});
+
+            
+    </script>
+</body>
+<section class="page-header">
+        <div class="container">
+            <h1>Блог о технологиях</h1>
+            <p>Самые интересные новости и обзоры из мира электроники</p>
+        </div>
+    </section>
+<section class="section blog">
+        <div class="container">
+            <div class="blog-content">
+                <div class="blog-posts">
+                    <article class="blog-post featured">
+                        <div class="post-image">
+                            <img src="../assets/images/image 12.svg" alt="Искусственный интеллект">
+                        </div>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span class="post-category">Технологии</span>
+                                <span class="post-date">15 ноября 2025</span>
+                            </div>
+                            <h2>Искусственный интеллект в бытовой технике: что нас ждет в 2024 году</h2>
+                            <p>Анализ трендов и перспектив развития AI в потребительской электронике. Умные дома, голосовые помощники и автоматизация повседневных задач...</p>
+                            <a href="#" class="read-more">Читать далее <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                    <div class="posts-grid">
+                        <article class="blog-post">
+                            <div class="post-image">
+                                <img src="../assets/images/image 11.svg" alt="Игровые ноутбуки">
+                            </div>
+                            <div class="post-content">
+                                <div class="post-meta">
+                                    <span class="post-category">Обзоры</span>
+                                    <span class="post-date">10 ноября 2025</span>
+                                </div>
+                                <h3>Топ-5 игровых ноутбуков 2025 года</h3>
+                                <p>Сравниваем производительность, дизайн и цену лучших игровых ноутбуков на рынке...</p>
+                                <a href="#" class="read-more">Читать далее</a>
+                            </div>
+                        </article>
+
+                        <article class="blog-post">
+                            <div class="post-image">
+                                <img src="../assets/images/image 10.svg" alt="Умный дом">
+                            </div>
+                            <div class="post-content">
+                                <div class="post-meta">
+                                    <span class="post-category">Умный дом</span>
+                                    <span class="post-date">5 ноября 2025</span>
+                                </div>
+                                <h3>Как построить умный дом с бюджетом до 50 000 рублей</h3>
+                                <p>Практическое руководство по выбору устройств и их интеграции в единую систему...</p>
+                                <a href="#" class="read-more">Читать далее</a>
+                            </div>
+                        </article>
+
+                    </div>
+                    <div class="pagination">
+                        <a href="#" class="page-number active">1</a>
+                        <a href="#" class="page-number">2</a>
+                        <a href="#" class="page-number">3</a>
+                        <a href="#" class="page-number next">Следующая <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+                <aside class="blog-sidebar">
+                    <div class="sidebar-widget">
+                        <h3>Категории</h3>
+                        <ul class="categories">
+                            <li><a href="#">Технологии <span>12</span></a></li>
+                            <li><a href="#">Обзоры <span>8</span></a></li>
+                            <li><a href="#">Умный дом <span>5</span></a></li>
+                            <li><a href="#">Фототехника <span>7</span></a></li>
+                            <li><a href="#">Аудио <span>6</span></a></li>
+                            <li><a href="#">Советы <span>10</span></a></li>
+                        </ul>
+                    </div>
+
+                    <div class="sidebar-widget newsletter-widget">
+                        <h3>Рассылка</h3>
+                        <p>Подпишитесь на наши новости и первыми узнавайте о новинках и акциях</p>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Ваш email" required>
+                            <button type="submit" class="btn btn-primary">Подписаться</button>
+                        </form>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+<footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <p>Магазин современной электроники для дома и офиса.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-vk"></i><img src="../assets/images/vk.svg" alt="" width="20px" height="20px"></a>
+                        <a href="#"><i class="fab fa-telegram"></i><img src="../assets/images/tg.svg" alt="" width="20px" height="20px"></a>
+                        <a href="#"><i class="fab fa-youtube"></i><img src="../assets/images/yt.svg" alt="" width="20px" height="20px"></a>
+                        <a href="#"><i class="fab fa-instagram"></i><img src="../assets/images/instagram.svg" alt="" width="20px" height="20px"></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Категории</h3>
+                    <ul>
+                        <li><a href="#">Ноутбуки</a></li>
+                        <li><a href="#">Смартфоны</a></li>
+                        <li><a href="#">Телевизоры</a></li>
+                        <li><a href="#">Аксессуары</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Компания</h3>
+                    <ul>
+                        <li><a href="about.html">О нас</a></li>
+                        <li><a href="blog.html">Блог</a></li>
+                        <li><a href="#">Вакансии</a></li>
+                        <li><a href="#">Партнеры</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"><img src="../assets/images/icons8-геолокация-66 3.svg" alt="" width="20px" height="20px"></i> Москва, ул. Техническая, 15</li>
+                        <li><i class="fas fa-phone"><img src="../assets/images/telephone.svg" alt="" width="20px" height="20px"></i> +7 (800) 123-45-67</li>
+                        <li><i class="fas fa-envelope"><img src="../assets/images/mail.svg" alt="" width="20px" height="20px"></i> info@focus.ru</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Магазин электроники "Фокус". Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+</html>

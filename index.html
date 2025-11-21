@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <title>Фокус</title>
+</head>
+<body>
+<div class="container0">
+<body>
+    <header>
+        <div class="container">
+            <div class="header-inner">
+                <a href="#" class="logo">
+                    <i class="fas fa-laptop"></i>
+                    <img src="../assets/images/логопип.svg" alt="">
+                </a>
+
+                <ul class="desktop-menu">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                    <li><a href="#">Каталог</a></li>
+                    <li><a href="blog.html">Блог</a></li>
+                    <li><a href="contact.html">Контакты</a></li>
+                    <li>
+                    </li>
+                </ul>
+                <div class="theme-toggle">
+                        <i class="fas fa-moon"><img src="../assets/images/луна.svg" alt=""></i>
+                </div>
+                <button class="burger" id="burgerBtn">
+                    <span class="burger-line"></span>
+                    <span class="burger-line"></span>
+                    <span class="burger-line"></span>
+                </button>
+            </div>
+
+            <div class="mobile-menu" id="mobileMenu">
+                <ul class="mobile-nav">
+                    <li><a href="#">Главная</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                    <li><a href="#">Каталог</a></li>
+                    <li><a href="blog.html">Блог</a></li>
+                    <li><a href="contact.html">Контакты</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Страница загружена - проверяем бургер-меню...');
+            
+            const burgerBtn = document.getElementById('burgerBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+
+            if (!burgerBtn || !mobileMenu) {
+                console.error('Элементы бургер-меню не найдены!');
+                return;
+            }
+
+            console.log('Бургер-кнопка найдена:', burgerBtn);
+            console.log('Мобильное меню найдено:', mobileMenu);
+
+            burgerBtn.addEventListener('click', function(event) {
+                console.log('Клик по бургеру!');
+                event.stopPropagation(); 
+                
+                this.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+                
+                console.log('Бургер активен:', this.classList.contains('active'));
+                console.log('Меню активно:', mobileMenu.classList.contains('active'));
+            });
+
+            const mobileLinks = document.querySelectorAll('.mobile-nav a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    console.log('Клик по ссылке меню - закрываем меню');
+                    burgerBtn.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                });
+            });
+
+            document.addEventListener('click', function(event) {
+                if (!mobileMenu.contains(event.target) && !burgerBtn.contains(event.target)) {
+                    burgerBtn.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                }
+            });
+
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    burgerBtn.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                }
+            });
+        });
+        
+    const themeToggle = document.querySelector('.theme-toggle');
+    const body = document.body;
+
+    if (localStorage.getItem('theme') === 'dark') {
+        body.classList.add('dark-theme');
+        themeToggle.innerHTML = '<i class="fas fa-sun"><img src="../assets/images/солн.svg" alt=""</i>';
+    }
+
+themeToggle.addEventListener('click', () => {
+    body.classList.toggle('dark-theme');
+    
+    if (body.classList.contains('dark-theme')) {
+        themeToggle.innerHTML = '<i class="fas fa-sun"><img src="../assets/images/солн.svg" alt=""></i>';
+        localStorage.setItem('theme', 'dark');
+    } else {
+        themeToggle.innerHTML = '<i class="fas fa-moon"><img src="../assets/images/луна.svg" alt=""></i>';
+        localStorage.setItem('theme', 'light');
+    }
+});
+
+            
+    </script>
+</body>
+<section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Инновационная электроника для вашего комфорта</h1>
+                <p>Откройте мир технологий будущего с магазином "Фокус". Мы предлагаем только лучшее оборудование по доступным ценам.</p>
+                <div class="hero-buttons">
+                    <a href="#products" class="btn btn-primary">Каталог товаров</a>
+                    <a href="#about" class="btn btn-secondary">О компании</a>
+                </div>
+            </div>
+        </div>
+        <script>
+
+        document.addEventListener('DOMContentLoaded', function() {
+
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+    </section>
+<section id="about" class="section about">
+        <div class="container">
+            <h2 class="section-title">О компании "Фокус"</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Магазин электроники "Фокус" работает на рынке с 2010 года. За это время мы стали надежным партнером для тысяч клиентов по всей стране.</p>
+                    <p>Наша миссия - делать передовые технологии доступными каждому, обеспечивая высокий уровень сервиса и поддержки.</p>
+                    <div class="features">
+                        <div class="feature">
+                            <i class="fas fa-shield-alt"> <img src="../assets/images/Shield.svg" alt="" width="53px" height="53px"></i>
+                            <h3>Гарантия качества</h3>
+                            <p>Все товары проходят тщательную проверку перед продажей</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-shipping-fast"><img src="../assets/images/Truck.svg" alt="" width="53px" height="53px"></i>
+                            <h3>Быстрая доставка</h3>
+                            <p>Доставляем заказы по всей стране за 1-3 дня</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-headset"><img src="../assets/images/Headphones.svg" alt="" width="53px" height="53px"></i>
+                            <h3>Поддержка 24/7</h3>
+                            <p>Наша служба поддержки всегда готова помочь</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="../assets/images/ee66a171-6d96-4c1f-8b0c-eaecb04990f8 1.svg" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+<section id="categories" class="section categories">
+        <div class="container">
+            <h2 class="section-title">Категории товаров</h2>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-laptop"></i><img src="../assets/images/Снимок экрана 2025-11-20 180008-Photoroom 1.svg" width="50px" height="50px">
+                    </div>
+                    <h3>Ноутбуки и компьютеры</h3>
+                    <p>Игровые, рабочие и ультрабуки от ведущих брендов</p>
+                    <a href="#" class="category-link">Смотреть все →</a>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-mobile-alt"></i><img src="../assets/images/apple-iphone-15-blue-1x-1200x630-Photoroom 1.svg" width="50px" height="50px">
+                    </div>
+                    <h3>Смартфоны и планшеты</h3>
+                    <p>Флагманы и бюджетные модели с гарантией качества</p>
+                    <a href="#" class="category-link">Смотреть все →</a>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-tv"></i><img src="../assets/images/100050149912b0-Photoroom 1.svg" width="50px" height="50px">
+                    </div>
+                    <h3>Телевизоры и аудио</h3>
+                    <p>4K, OLED телевизоры и качественные аудиосистемы</p>
+                    <a href="#" class="category-link">Смотреть все →</a>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-camera"></i><img src="../assets/images/e9hs2cyh3xiyfk1s6jpvjh72ayh4xwz3-Photoroom 1.svg" width="50px" height="50px">
+                    </div>
+                    <h3>Фото и видео</h3>
+                    <p>Зеркальные камеры, объективы и аксессуары</p>
+                    <a href="#" class="category-link">Смотреть все →</a>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-gamepad"></i><img src="../assets/images/playstation-5-slim-digital-Photoroom 1.svg" width="50px" height="50px">
+                    </div>
+                    <h3>Игры и консоли</h3>
+                    <p>Игровые приставки, аксессуары и новинки игр</p>
+                    <a href="#" class="category-link">Смотреть все →</a>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-home"></i><img src="../assets/images/vs0jr4jo6s9zssvckwiyr65goznq78a2-Photoroom 1.svg" width="50px" height="50px">
+                    </div>
+                    <h3>Умный дом</h3>
+                    <p>Умные устройства для автоматизации вашего дома</p>
+                    <a href="#" class="category-link">Смотреть все →</a>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-headphones"></i><img src="../assets/images/65177.970-Photoroom 1.svg" width="50px" height="50px">
+                    </div>
+                    <h3>Аксессуары</h3>
+                    <p>Наушники, чехлы, power bank и другие аксессуары</p>
+                    <a href="#" class="category-link">Смотреть все →</a>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-desktop"></i> <img src="../assets/images/600023401657b0-Photoroom 1.svg" width="50px" height="50px">
+                    </div>
+                    <h3>Комплектующие</h3>
+                    <p>Комплектующие для сборки и апгрейда ПК</p>
+                    <a href="#" class="category-link">Смотреть все →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+<section id="products" class="section products">
+        <div class="container">
+            <h2 class="section-title">Популярные товары</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="../assets/images/image 4-Photoroom 1.svg" alt="">
+                    </div>
+                    <div class="product-info">
+                        <h3>Ноутбук Gaming Pro</h3>
+                        <p>Мощный игровой ноутбук с процессором последнего поколения</p>
+                        <div class="product-price">89 999 ₽</div>
+                        <button class="btn btn-primary">В корзину</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="../assets/images/image 4 (1)-Photoroom 1.svg" alt="">
+                    </div>
+                    <div class="product-info">
+                        <h3>Наушники SoundMax</h3>
+                        <p>Беспроводные наушники с шумоподавлением</p>
+                        <div class="product-price">12 499 ₽</div>
+                        <button class="btn btn-primary">В корзину</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="../assets/images/image 4 (2)-Photoroom 1.svg" alt="">
+                    </div>
+                    <div class="product-info">
+                        <h3>Смартфон TechPhone X</h3>
+                        <p>Флагманский смартфон с камерой 108 МП</p>
+                        <div class="product-price">64 999 ₽</div>
+                        <button class="btn btn-primary">В корзину</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<section class="section testimonials">
+        <div class="container">
+            <h2 class="section-title">Отзывы клиентов</h2>
+            <div class="testimonials-slider">
+                <div class="testimonial active">
+                    <div class="testimonial-content">
+                        <p>"Отличный магазин! Быстрая доставка, качественный товар и вежливые консультанты. Рекомендую!"</p>
+                        <div class="testimonial-author">
+                            <img src="../assets/images/женщинакуз.svg" alt="Мария">
+                            <div>
+                                <h4>Мария Кузнецова</h4>
+                                <span>Клиент</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>"Покупаю технику только в "Фокусе". Ни разу не подвели. Цены адекватные, сервис на высоте."</p>
+                        <div class="testimonial-author">
+                            <img src="../assets/images/муж.svg" alt="Алексей">
+                            <div>
+                                <h4>Алексей Петров</h4>
+                                <span>Клиент</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>"Заказывал ноутбук для работы. Доставили вовремя, все работает идеально. Спасибо!"</p>
+                        <div class="testimonial-author">
+                            <img src="../assets/images/женон.svg" alt="Ольга">
+                            <div>
+                                <h4>Ольга Сидорова</h4>
+                                <span>Клиент</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-controls">
+                    <button class="slider-prev"><img src="../assets/images/Line (1).svg" alt=""><i class="fas fa-chevron-right"></i><i class="fas fa-chevron-left"></i></button>
+                    <button class="slider-next"><img src="../assets/images/Line.svg" alt=""><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+        <script>
+        const testimonials = document.querySelectorAll('.testimonial');
+    const prevBtn = document.querySelector('.slider-prev');
+    const nextBtn = document.querySelector('.slider-next');
+
+    if (testimonials.length > 0 && prevBtn && nextBtn) {
+        let currentTestimonial = 0;
+
+        function showTestimonial(index) {
+            testimonials.forEach(testimonial => {
+                testimonial.classList.remove('active');
+            });
+            
+            testimonials[index].classList.add('active');
+            currentTestimonial = index;
+        }
+
+        prevBtn.addEventListener('click', () => {
+            let index = currentTestimonial - 1;
+            if (index < 0) index = testimonials.length - 1;
+            showTestimonial(index);
+        });
+
+        nextBtn.addEventListener('click', () => {
+            let index = currentTestimonial + 1;
+            if (index >= testimonials.length) index = 0;
+            showTestimonial(index);
+        });
+    }
+        </script>
+    </section>
+   
+
+<section class="section cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Готовы сделать заказ?</h2>
+                <p>Свяжитесь с нами прямо сейчас и получите бесплатную консультацию</p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn btn-primary">Связаться с нами</a>
+                    <a href="tel:+78001234567" class="btn btn-secondary">Позвонить</a>
+                </div>
+            </div>
+        </div>
+    </section>
+<footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <p>Магазин современной электроники для дома и офиса.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-vk"></i><img src="../assets/images/vk.svg" alt="" width="20px" height="20px"></a>
+                        <a href="#"><i class="fab fa-telegram"></i><img src="../assets/images/tg.svg" alt="" width="20px" height="20px"></a>
+                        <a href="#"><i class="fab fa-youtube"></i><img src="../assets/images/yt.svg" alt="" width="20px" height="20px"></a>
+                        <a href="#"><i class="fab fa-instagram"></i><img src="../assets/images/instagram.svg" alt="" width="20px" height="20px"></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Категории</h3>
+                    <ul>
+                        <li><a href="#">Ноутбуки</a></li>
+                        <li><a href="#">Смартфоны</a></li>
+                        <li><a href="#">Телевизоры</a></li>
+                        <li><a href="#">Аксессуары</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Компания</h3>
+                    <ul>
+                        <li><a href="about.html">О нас</a></li>
+                        <li><a href="blog.html">Блог</a></li>
+                        <li><a href="#">Вакансии</a></li>
+                        <li><a href="#">Партнеры</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"><img src="../assets/images/icons8-геолокация-66 3.svg" alt="" width="20px" height="20px"></i> Москва, ул. Техническая, 15</li>
+                        <li><i class="fas fa-phone"><img src="../assets/images/telephone.svg" alt="" width="20px" height="20px"></i> +7 (800) 123-45-67</li>
+                        <li><i class="fas fa-envelope"><img src="../assets/images/mail.svg" alt="" width="20px" height="20px"></i> info@focus.ru</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Магазин электроники "Фокус". Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+</html>

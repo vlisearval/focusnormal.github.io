@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <title>Фокус</title>
+</head>
+<body>
+<div class="container0">
+<body>
+    <header>
+        <div class="container">
+            <div class="header-inner">
+                <a href="#" class="logo">
+                    <i class="fas fa-laptop"></i>
+                    <img src="../assets/images/логопип.svg" alt="">
+                </a>
+
+                <ul class="desktop-menu">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                    <li><a href="#">Каталог</a></li>
+                    <li><a href="blog.html">Блог</a></li>
+                    <li><a href="contact.html">Контакты</a></li>
+                    <li>
+                    </li>
+                </ul>
+                <div class="theme-toggle">
+                        <i class="fas fa-moon"><img src="../assets/images/луна.svg" alt=""></i>
+                </div>
+                <button class="burger" id="burgerBtn">
+                    <span class="burger-line"></span>
+                    <span class="burger-line"></span>
+                    <span class="burger-line"></span>
+                </button>
+            </div>
+
+            <div class="mobile-menu" id="mobileMenu">
+                <ul class="mobile-nav">
+                    <li><a href="#">Главная</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                    <li><a href="#">Каталог</a></li>
+                    <li><a href="blog.html">Блог</a></li>
+                    <li><a href="contact.html">Контакты</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Страница загружена - проверяем бургер-меню...');
+            
+            const burgerBtn = document.getElementById('burgerBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+
+            if (!burgerBtn || !mobileMenu) {
+                console.error('Элементы бургер-меню не найдены!');
+                return;
+            }
+
+            console.log('Бургер-кнопка найдена:', burgerBtn);
+            console.log('Мобильное меню найдено:', mobileMenu);
+
+            burgerBtn.addEventListener('click', function(event) {
+                console.log('Клик по бургеру!');
+                event.stopPropagation(); 
+                
+                this.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+                
+                console.log('Бургер активен:', this.classList.contains('active'));
+                console.log('Меню активно:', mobileMenu.classList.contains('active'));
+            });
+
+            const mobileLinks = document.querySelectorAll('.mobile-nav a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    console.log('Клик по ссылке меню - закрываем меню');
+                    burgerBtn.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                });
+            });
+
+            document.addEventListener('click', function(event) {
+                if (!mobileMenu.contains(event.target) && !burgerBtn.contains(event.target)) {
+                    burgerBtn.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                }
+            });
+
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    burgerBtn.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                }
+            });
+        });
+        
+    const themeToggle = document.querySelector('.theme-toggle');
+    const body = document.body;
+
+    if (localStorage.getItem('theme') === 'dark') {
+        body.classList.add('dark-theme');
+        themeToggle.innerHTML = '<i class="fas fa-sun"><img src="../assets/images/солн.svg" alt=""</i>';
+    }
+
+themeToggle.addEventListener('click', () => {
+    body.classList.toggle('dark-theme');
+    
+    if (body.classList.contains('dark-theme')) {
+        themeToggle.innerHTML = '<i class="fas fa-sun"><img src="../assets/images/солн.svg" alt=""></i>';
+        localStorage.setItem('theme', 'dark');
+    } else {
+        themeToggle.innerHTML = '<i class="fas fa-moon"><img src="../assets/images/луна.svg" alt=""></i>';
+        localStorage.setItem('theme', 'light');
+    }
+});
+
+            
+    </script>
+</body>
+<section class="page-header">
+        <div class="container">
+            <h1>О компании "Фокус"</h1>
+            <p>Узнайте больше о нашей истории, миссии и команде</p>
+        </div>
+    </section>
+<section class="section mission">
+    <h2 class="section-title">Наша миссия</h2>
+        <div class="container">
+            <div class="mission-content">
+                <div class="mission-text">
+                    <p>Мы стремимся сделать передовые технологии доступными для каждого, обеспечивая высочайший уровень сервиса и поддержки.</p>
+                    </div>
+                </div>
+                <div class="mission-image">
+                    <img src="../assets/images/image 9.svg" width="400px" height="600px" alt="">
+                </div>
+            </div>
+        </section></div>
+    
+<section class="section team">
+        <div class="container">
+            <h2 class="section-title">Наша команда</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-photo">
+                        <img src="../assets/images/мужком.svg" alt="Иван Петров">
+                    </div>
+                    <h3>Иван Петров</h3>
+                    <p class="position">Генеральный директор</p>
+                    <p class="bio">Основатель компании с 15-летним опытом в ритейле электроники</p>
+                </div>
+                <div class="team-member">
+                    <div class="member-photo">
+                        <img src="../assets/images/женком.svg" alt="Анна Сидорова">
+                    </div>
+                    <h3>Анна Петрова</h3>
+                    <p class="position">Директор по маркетингу</p>
+                    <p class="bio">Специалист с 10-летним опытом в digital-маркетинге</p>
+                </div>
+                <div class="team-member">
+                    <div class="member-photo">
+                        <img src="../assets/images/телком.svg" alt="Мария Козлова">
+                    </div>
+                    <h3>Мария Козлова</h3>
+                    <p class="position">Технический директор</p>
+                    <p class="bio">Эксперт в области IT и электроники с 12-летним стажем</p>
+                </div>
+            </div>
+        </div>
+    </section>
+<footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <p>Магазин современной электроники для дома и офиса.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-vk"></i><img src="../assets/images/vk.svg" alt="" width="20px" height="20px"></a>
+                        <a href="#"><i class="fab fa-telegram"></i><img src="../assets/images/tg.svg" alt="" width="20px" height="20px"></a>
+                        <a href="#"><i class="fab fa-youtube"></i><img src="../assets/images/yt.svg" alt="" width="20px" height="20px"></a>
+                        <a href="#"><i class="fab fa-instagram"></i><img src="../assets/images/instagram.svg" alt="" width="20px" height="20px"></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Категории</h3>
+                    <ul>
+                        <li><a href="#">Ноутбуки</a></li>
+                        <li><a href="#">Смартфоны</a></li>
+                        <li><a href="#">Телевизоры</a></li>
+                        <li><a href="#">Аксессуары</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Компания</h3>
+                    <ul>
+                        <li><a href="about.html">О нас</a></li>
+                        <li><a href="blog.html">Блог</a></li>
+                        <li><a href="#">Вакансии</a></li>
+                        <li><a href="#">Партнеры</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"><img src="../assets/images/icons8-геолокация-66 3.svg" alt="" width="20px" height="20px"></i> Москва, ул. Техническая, 15</li>
+                        <li><i class="fas fa-phone"><img src="../assets/images/telephone.svg" alt="" width="20px" height="20px"></i> +7 (800) 123-45-67</li>
+                        <li><i class="fas fa-envelope"><img src="../assets/images/mail.svg" alt="" width="20px" height="20px"></i> info@focus.ru</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Магазин электроники "Фокус". Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
